@@ -1,4 +1,36 @@
-<project name = "CS310 PA1" default="dist" basedir=".">
+<project name = "CS310 PA1" default="compile" basedir=".">
     <description>
         Programming Assignment #1 for CS310 Fall 2018
     </description>
+
+    <!-- Global properties for the build file -->
+    <property name="source.dir" value="src/" />
+    <property name="build.dir" value="bin/" />
+    <property name="doc.dir" value="doc/" />
+    <property name="dist.dir" value="dist/"/>
+
+    <!-- Setup directories which used by the projects -->
+    <target name="init" description="Setup project directories">
+        <tstamp />
+        <mkdir dir="${build.dir}"/>
+        <mkdir dir="${doc.dir}"/>
+        <mkdir dir="${dist.dir}"/>
+    </target>
+    <!-- Compile the source code in ${source.dir} into ${build.dir} -->
+    <target name="compile" depends="init" description="compile the java source code">
+        <javac srcdir="${source.dir}" destdir="${build.dir}"/>
+    </target>
+    <target name="doc" description="generate documentation for the program">
+        <javadoc sourcepath="${source.dir}" destdir="${doc.dir}"/>
+    </target>
+    
+    <target name="clean" description="clean up the main directory">
+        <delete dir="${build.dir}"/>
+        <delete dir="${doc.dir}"/>
+        <delete dir="${dist.dir}"/>
+    </target>
+    <target name="dist" description="create jar files from the class files">
+    </target>
+
+
+</project>
