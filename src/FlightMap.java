@@ -6,22 +6,36 @@ import java.io.IOException;
 public class FlightMap
 {
 	private ArrayList<Node> flightMap;
-	/**
+	/** Overloaded constructor for FlightMap. Creates the flightmap.
 	 * 
-	 * @param inputFilename
+	 * @param inputFilename: String, filepath of the input file
 	 */
 	public FlightMap(String inputFilename)
 	{
 		parseFile(inputFilename);
 	}
+	/** Wrapper function for Integer's parseInt function
+	 * 
+	 * @param costString: String that can be parsed as an integer
+	 * @return Integer value, the cost of the flight between cities
+	 */
 	private static Integer getCost(String costString)
 	{
 		return Integer.parseInt(costString);
 	}
+	/** Access the ArrayList&lt;Node&gt; member variable
+	 * 
+	 * @return ArrayList&lt;Node&gt; storing all of the nodes ('cities')
+	 */
 	public ArrayList<Node> getFlightMap()
 	{
 		return this.flightMap;
 	}
+	/** Check the if a city is already on the map.
+	 * 
+	 * @param name: String, name of the city 
+	 * @return Node: Null if the city is not on the map, otherwise the Node pointer
+	 */
 	private Node findNode(String name)
 	{
 		if(this.flightMap.isEmpty())
@@ -38,10 +52,9 @@ public class FlightMap
 		return null;
 	}
 
-	/**
+	/** Construct the FlightMap by parsing the input file and constructing the map and nodes
 	 * 
-	 * @param filename
-	 * @return
+	 * @param filename: String, the input file's filepath
 	 */ 
 	private void parseFile(String filename)
 	{

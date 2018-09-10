@@ -8,6 +8,10 @@
     <property name="build.dir" value="bin/" />
     <property name="doc.dir" value="doc/" />
     <property name="dist.dir" value="dist/"/>
+    <path id="junit.class.path">
+        <pathelement location="lib/junit-4.10.jar"/>
+        <pathelement location="${build.dir}"/>
+    </path>
 
     <!-- Setup directories which used by the projects -->
     <target name="init" description="Setup project directories">
@@ -18,12 +22,29 @@
     </target>
     <!-- Compile the source code in ${source.dir} into ${build.dir} -->
     <target name="compile" depends="init" description="compile the java source code">
-        <javac srcdir="${source.dir}" destdir="${build.dir}"/>
+        <javac srcdir="${source.dir}" destdir="${build.dir}" includeantruntime="false">
+            <classpath refid="junit.class.path"/>
+        </javac>
     </target>
-    <target name="doc" description="generate documentation for the program">
-        <javadoc sourcepath="${source.dir}" destdir="${doc.dir}"/>
+
+    <!-- Generate the JavaDocs for the source code.-->
+    <target name="doc" depends="init" description="generate documentation for the program">
+        <javadoc sourcepath="${source.dir}" destdir="${doc.dir}">
+            <fileset dir="."/>
+            <classpath refid="junit.class.path"/>
+        </javadoc>
     </target>
     
+    <!-- Run the JUnit Unit Tests -->
+    <target name="test" depends="compile" description="Run the JUnit Tests files">
+        <junit printsummary="yes" haltonfailure="no">
+            <formatter type="brief" usefile="false"/>
+            <classpath refid="junit.class.path"/>
+            <test name="TestFlightMap"/>
+        </junit>
+    </target>
+
+    <!-- Clean the project directory. Removes the bin/ doc/ dist/ directories-->
     <target name="clean" description="clean up the main directory">
         <delete dir="${build.dir}"/>
         <delete dir="${doc.dir}"/>
