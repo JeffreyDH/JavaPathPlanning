@@ -13,41 +13,65 @@ public class SearchMap
 	public static void main(String[] args)
 	{
 		FlightMap map = new FlightMap(args[0]);
-		
-		Integer numFlightPathsLeft = map.numPaths();
-		
-		// track the most recently visited node.
-		ArrayList<Node> cities = map.getFlightMap();
+				
+		// For DFS
 		ArrayDeque<Node> stack = new ArrayDeque<Node>();
-		
-		Node currNode = map.findStartNode();
-		while(numFlightPathsLeft != 0)
+		Node currNode = null;
+		stack.push(map.findStartNode());
+		while(!stack.isEmpty())
 		{
-		}
-		
-		
-		for(Node n: cities)
-		{
-			// start node so already have paths to adj cities
-			if(n.isStartNode())
+			// visit new node
+			currNode = stack.pop();
+			currNode.visited();
+			
+			// special case: start node is not connected to any other city
+			if(currNode.getAdjacentNodes().isEmpty() && currNode.isStartNode())
 			{
-				numFlightPathsLeft -= n.getAdjacentNodes().size();
+				break;
 			}
-			for(Node adj: n.getAdjacentNodes().keySet())
+			// add adjacent nodes onto the stack
+			for(Node adj: currNode.getAdjacentNodes().keySet())
 			{
-				stack.push(adj);
+				if(!adj.hasBeenVisited())
+				{
+					// add to the stack
+					stack.push(adj);
+					// set the parent node
+					adj.setParentNode(currNode);
+				}
 			}
 		}
-		
+		writeSolution(args[1], map);
 	}
 	
 	/**
 	 * 
 	 * @param outputFile
 	 */
-	public void writeSolution(String outputFile)
+	public static void writeSolution(String outputFile, FlightMap map)
 	{
-		
+		Node parent = null;
+		StringBuilder build = new StringBuilder();
+
+		for(Node n: map.getFlightMap())
+		{
+			if(n.getParentNode() != null)
+			{
+				parent = n;
+				while(parent != null)
+				{
+					build.append(parent.getName());
+					build.append(",");
+					
+					parent = parent.getParentNode();
+					
+					
+					
+				}
+				System.out.println(build.reverse());
+				build.setLength(0);
+			}
+		}
 	}
 	
 };

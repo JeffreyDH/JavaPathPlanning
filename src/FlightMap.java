@@ -109,7 +109,6 @@ public class FlightMap
             			this.flightMap.add(node);
             		}
             		currCity.addAdjacentNode(node, getCost(line[2]));
-            		
             	}
             	// new city
             	else

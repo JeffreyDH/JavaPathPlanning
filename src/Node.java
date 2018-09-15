@@ -8,6 +8,7 @@ public class Node
     private Boolean isStartNode;
     private HashMap<Node, Integer> adjacentNodes;
     private Boolean visited;
+    private Node parent;
 
     
     /**
@@ -20,6 +21,8 @@ public class Node
         this.name = name;
         this.isStartNode = isStart;
         this.adjacentNodes = new HashMap<Node, Integer>();
+        this.visited = false;
+        this.parent = null;
     }
     /**Getter for the node's name
      * 
@@ -52,6 +55,21 @@ public class Node
     public Boolean isStartNode()
     {
     	return this.isStartNode;
+    }
+    /**
+     * 
+     */
+    public void setParentNode(Node pNode)
+    {
+    	this.parent = pNode;
+    }
+    /**
+     * 
+     * @return
+     */
+    public Node getParentNode()
+    {
+    	return this.parent;
     }
     /** Add adjacent node to the node's map
      * 
