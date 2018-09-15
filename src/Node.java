@@ -7,6 +7,9 @@ public class Node
     private String name;
     private Boolean isStartNode;
     private HashMap<Node, Integer> adjacentNodes;
+    private Boolean visited;
+
+    
     /**
      * 
      * @param name: String, name of the node as read-in from the input file
@@ -25,6 +28,22 @@ public class Node
     public String getName()
     {
         return this.name;
+    }
+    /** Sets member variable visited to True
+     * 
+     */
+    public void visited()
+    {
+    	this.visited = true;
+    }
+    /** Returns value of the member variable visited
+     * 
+     * @return Boolean: True-Node has been visited before
+     * 					False-Node has not been visited
+     */
+    public Boolean hasBeenVisited()
+    {
+    	return this.visited;
     }
     /**Check if the node is the start node
      * 

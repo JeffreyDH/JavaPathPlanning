@@ -31,6 +31,14 @@ public class FlightMap
 	{
 		return this.flightMap;
 	}
+	/**
+	 * 
+	 * @return
+	 */
+	public Integer numPaths()
+	{
+		return this.flightMap.size()-1;
+	}
 	/** Check the if a city is already on the map.
 	 * 
 	 * @param name: String, name of the city 
@@ -51,7 +59,20 @@ public class FlightMap
 		}
 		return null;
 	}
-
+	/**
+	 * 
+	 */
+	public Node findStartNode()
+	{
+		for(Node n: flightMap)
+		{
+			if(n.isStartNode())
+			{
+				return n;
+			}
+		}
+		return null;
+	}
 	/** Construct the FlightMap by parsing the input file and constructing the map and nodes
 	 * 
 	 * @param filename: String, the input file's filepath
