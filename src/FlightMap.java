@@ -134,6 +134,7 @@ public class FlightMap
             		}
             	}
             }
+            br.close();
         }
         catch(IOException io)
         {

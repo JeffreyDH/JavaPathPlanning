@@ -9,7 +9,7 @@ public class Node
     private HashMap<Node, Integer> adjacentNodes;
     private Boolean visited;
     private Node parent;
-
+    private Integer cost;
     
     /**
      * 
@@ -23,6 +23,7 @@ public class Node
         this.adjacentNodes = new HashMap<Node, Integer>();
         this.visited = false;
         this.parent = null;
+        this.cost = 0;
     }
     /**Getter for the node's name
      * 
@@ -88,5 +89,19 @@ public class Node
     {
     	return this.adjacentNodes;
     }
-    
+    /**
+     * 
+     */
+    public void setCost(Integer cost)
+    {
+    	this.cost = cost;
+    }
+    /**
+     * 
+     * 
+     */
+    public Integer getCost()
+    {
+    	return this.cost;
+    }
 };
