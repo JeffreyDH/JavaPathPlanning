@@ -1,8 +1,8 @@
 import java.io.IOException;
 import java.util.*;
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
 public class FlightMap
 {
 	private ArrayList<Node> flightMap;
@@ -12,7 +12,16 @@ public class FlightMap
 	 */
 	public FlightMap(String inputFilename)
 	{
-		parseFile(inputFilename);
+		try
+		{
+			parseFile(inputFilename);
+
+		}
+		catch(FileNotFoundException fnfe)
+		{
+			System.out.printf("File %s not found\nExiting program.\n", inputFilename);
+			System.exit(-1);
+		}
 	}
 	/** Wrapper function for Integer's parseInt function
 	 * 
@@ -76,8 +85,9 @@ public class FlightMap
 	/** Construct the FlightMap by parsing the input file and constructing the map and nodes
 	 * 
 	 * @param filename: String, the input file's filepath
+	 * @throws FileNotFoundException
 	 */ 
-	private void parseFile(String filename)
+	private void parseFile(String filename) throws FileNotFoundException
 	{
 		try{
             BufferedReader br = new BufferedReader(new FileReader(filename));
@@ -136,6 +146,10 @@ public class FlightMap
             }
             br.close();
         }
+		catch(FileNotFoundException fnfe)
+		{
+			throw fnfe;
+		}
         catch(IOException io)
         {
         	System.out.println(io.getMessage());

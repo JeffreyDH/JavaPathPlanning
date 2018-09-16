@@ -5,10 +5,13 @@ import org.junit.Before;
 public class TestFlightMap
 {
 	private FlightMap map;
+	private static final String INPUT_FILE = "input.txt";
 	
-	public TestFlightMap()
+	@Before
+	public void setup()
 	{
-		this.map = new FlightMap("/Users/jeff/Repos/CS310_Project1/input.txt");
+		System.out.printf("Current directory is %s\n", System.getProperty("user.dir"));
+		this.map = new FlightMap(TestFlightMap.INPUT_FILE);
 	}
     /**
      * Test the parsing of the input file.

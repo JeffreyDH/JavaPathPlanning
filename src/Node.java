@@ -58,7 +58,7 @@ public class Node
     	return this.isStartNode;
     }
     /**
-     * 
+     * @param
      */
     public void setParentNode(Node pNode)
     {
@@ -90,7 +90,7 @@ public class Node
     	return this.adjacentNodes;
     }
     /**
-     * 
+     * @param cost
      */
     public void setCost(Integer cost)
     {
@@ -98,7 +98,7 @@ public class Node
     }
     /**
      * 
-     * 
+     *@return
      */
     public Integer getCost()
     {

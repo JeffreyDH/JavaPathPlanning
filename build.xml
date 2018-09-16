@@ -11,6 +11,7 @@
     <path id="junit.class.path">
         <pathelement location="lib/junit-4.10.jar"/>
         <pathelement location="${build.dir}"/>
+
     </path>
 
     <!-- Setup directories which used by the projects -->
@@ -41,6 +42,8 @@
             <formatter type="brief" usefile="false"/>
             <classpath refid="junit.class.path"/>
             <test name="TestFlightMap"/>
+            <test name="TestNode"/>
+            <test name="TestSearchMap"/>
         </junit>
     </target>
 
@@ -50,8 +53,11 @@
         <delete dir="${doc.dir}"/>
         <delete dir="${dist.dir}"/>
     </target>
-    <target name="dist" description="create jar files from the class files">
+    <!-- Jar .class files-->
+    <target name="dist" depends="compile" description="create jar files from the class files">
+        <jar destfile="${dist.dir}/SearchMap.jar" basedir="${build.dir}"/>
     </target>
+
 
 
 </project>

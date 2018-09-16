@@ -1,4 +1,5 @@
-*.txt
+o*.txt
 /bin/*
 /doc/*
+/dist/*
 /.idea/*

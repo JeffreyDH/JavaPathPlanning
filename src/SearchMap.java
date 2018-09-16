@@ -4,7 +4,7 @@ import java.io.*;
 
 public class SearchMap
 {	
-	private final static String outputFileHeader = "Destination Flight Route from %s Total Cost";
+	private final static String OUTPUT_FILE_HEADER = "Destination Flight Route from %s Total Cost";
 	
 	/** Main entry point into the program.
 	 * 
@@ -50,7 +50,11 @@ public class SearchMap
 		// write solution to the file passed in 
 		writeSolution(args[1], map);
 	}
-	
+	/** Go through the graph creating the path from the start node to each destination node
+	 * 
+	 * @param map: FlightMap storing the graph
+	 * @return ArrayList of Strings storing the path solutions
+	 */
 	private static ArrayList<String> reconstructSolution(FlightMap map)
 	{
 		Node parent = null;
@@ -95,13 +99,13 @@ public class SearchMap
 				solution.setLength(0);
 			}
 		}
-		
 		return paths;
 	}
 
-	/**
+	/** Write the solution paths onto the file passed in
 	 * 
-	 * @param outputFile
+	 * @param outputFile: Path to where the output file will be written
+	 * @param map:Flightmap storing the graph represented in the input file
 	 */
 	private static void writeSolution(String outputFile, FlightMap map)
 	{
@@ -110,11 +114,13 @@ public class SearchMap
 		{
 			PrintWriter pw = new PrintWriter(new FileWriter(outputFile));
 			
-			pw.println(String.format(SearchMap.outputFileHeader, map.findStartNode().getName()));
+			pw.println(String.format(SearchMap.OUTPUT_FILE_HEADER, map.findStartNode().getName()));
+			// write solutions to the file
 			for(String path: solutionStrings)
 			{
 				pw.println(path);
 			}
+			// close the file
 			pw.flush();
 			pw.close();
 		}
