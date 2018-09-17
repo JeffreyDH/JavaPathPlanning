@@ -1,9 +1,7 @@
 import static org.junit.Assert.*;
-import static org.hamcrest.CoreMatchers.*;
 import org.junit.Test;
 import org.junit.Before;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Random;
 public class TestNode
 {

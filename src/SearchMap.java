@@ -34,7 +34,8 @@ public class SearchMap
 			// add adjacent nodes onto the stack
 			for(Node adj: currNode.getAdjacentNodes().keySet())
 			{
-				if(!adj.hasBeenVisited())
+				// hasnt been visited and not already on the stack
+				if(!adj.hasBeenVisited() && !stack.contains(adj))
 				{
 					// add to the stack
 					stack.push(adj);

@@ -33,6 +33,8 @@ public class TestSearchMap
 			{
 				Assert.assertEquals((char)(solutionChar),(char)(expectedChar));
 			}
+			expected.close();
+			solution.close();
 
 		}
 		catch(FileNotFoundException fnfe)

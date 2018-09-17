@@ -1,9 +1,6 @@
 import java.util.HashMap;
 public class Node
 {
-	/**
-	 * Keep track of the node's string representation
-	 */
     private String name;
     private Boolean isStartNode;
     private HashMap<Node, Integer> adjacentNodes;
@@ -57,16 +54,16 @@ public class Node
     {
     	return this.isStartNode;
     }
-    /**
-     * @param
+    /** Sets the parent node, used in the solution reconstruction
+     * @param pNode, node that will be the parent node
      */
     public void setParentNode(Node pNode)
     {
     	this.parent = pNode;
     }
-    /**
+    /** Get the node's parent node
      * 
-     * @return
+     * @return Node corresponding to the parent node of this node
      */
     public Node getParentNode()
     {
@@ -89,16 +86,16 @@ public class Node
     {
     	return this.adjacentNodes;
     }
-    /**
-     * @param cost
+    /** Sets the cost to get to this node from the start node
+     * @param cost Integer value 
      */
     public void setCost(Integer cost)
     {
     	this.cost = cost;
     }
-    /**
+    /** Get the cost to get to this node from the start node
      * 
-     *@return
+     *@return Integer, flight cost
      */
     public Integer getCost()
     {

@@ -53,7 +53,7 @@
         <delete dir="${doc.dir}"/>
         <delete dir="${dist.dir}"/>
     </target>
-    <!-- Jar .class files-->
+    <!-- Jar .class files into a single jar file-->
     <target name="dist" depends="compile" description="create jar files from the class files">
         <jar destfile="${dist.dir}/SearchMap.jar" basedir="${build.dir}"/>
     </target>

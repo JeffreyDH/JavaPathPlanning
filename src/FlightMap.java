@@ -32,6 +32,7 @@ public class FlightMap
 	{
 		return Integer.parseInt(costString);
 	}
+	
 	/** Access the ArrayList&lt;Node&gt; member variable
 	 * 
 	 * @return ArrayList&lt;Node&gt; storing all of the nodes ('cities')
@@ -40,14 +41,7 @@ public class FlightMap
 	{
 		return this.flightMap;
 	}
-	/**
-	 * 
-	 * @return
-	 */
-	public Integer numPaths()
-	{
-		return this.flightMap.size()-1;
-	}
+	
 	/** Check the if a city is already on the map.
 	 * 
 	 * @param name: String, name of the city 
@@ -68,8 +62,9 @@ public class FlightMap
 		}
 		return null;
 	}
-	/**
+	/**Searches the flightmap for the start city
 	 * 
+	 * @return Node corresponding to the start city of the flightmap
 	 */
 	public Node findStartNode()
 	{

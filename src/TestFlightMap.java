@@ -1,7 +1,7 @@
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.Before;
-
+import java.util.ArrayList;
 public class TestFlightMap
 {
 	private FlightMap map;
@@ -54,6 +54,11 @@ public class TestFlightMap
     				
     		}
     	}
+    }
+    @Test
+    public void TestFindStartNode()
+    {	
+    	Assert.assertTrue(map.findStartNode().isStartNode());
     }
 
 };
