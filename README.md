@@ -1,9 +1,10 @@
-# CS310_Project1
-Project1
+# Software Dev. Tools Practice
 
 ## Running the program
 From within the Project1 directory:\
 *cd bin/* \
 *java SearchMap **__inputfilePath__** **__outputfilePath__***\
 \
-Beside the required directories/files. There are 2 other files included for the JUnit Test cases: ExpectedOutput.txt and input.txt. 
+Files included for the JUnit Test cases: ExpectedOutput.txt and input.txt.
+\
+Input file structure example is provided in the input.txt file.
